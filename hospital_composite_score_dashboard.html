@@ -1,0 +1,161 @@
+
+<h2 class="sr-only">Hospital composite quality score dashboard — CMS analysis of 4,184 US hospitals across 4 quality dimensions, top 5 performers shown</h2>
+
+<style>
+.mg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 1rem}
+.mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px}
+.ml{font-size:12px;color:var(--color-text-secondary);margin:0 0 3px}
+.mv{font-size:22px;font-weight:500;color:var(--color-text-primary);margin:0}
+.pn{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1rem}
+.pt{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px}
+.lg{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px;font-size:12px;color:var(--color-text-secondary)}
+.ld{width:10px;height:10px;border-radius:2px;display:inline-block;flex-shrink:0}
+.bg{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ar{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:.5px solid var(--color-border-tertiary)}
+.ar:last-child{border-bottom:none;padding-bottom:0}
+.ad{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.an{font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 1px}
+.ac{font-size:11px;color:var(--color-text-secondary);margin:0}
+</style>
+
+<div style="padding:1rem 0 0">
+
+<div class="mg">
+  <div class="mc"><p class="ml">Hospitals analyzed</p><p class="mv">4,184</p></div>
+  <div class="mc"><p class="ml">Quality dimensions</p><p class="mv">4</p></div>
+  <div class="mc"><p class="ml">Hospital archetypes</p><p class="mv">7</p></div>
+  <div class="mc"><p class="ml">Top composite score</p><p class="mv">83.0</p></div>
+</div>
+
+<div class="pn">
+  <p class="pt">Top 5 hospitals — composite score breakdown by dimension (each max 25 pts)</p>
+  <div class="lg">
+    <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#1D9E75"></span>Clinical — mortality (25%)</span>
+    <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#378ADD"></span>Safety — PSI-90 & HAI (25%)</span>
+    <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#BA7517"></span>Spending efficiency — MSPB (25%)</span>
+    <span style="display:flex;align-items:center;gap:5px"><span class="ld" style="background:#D85A30"></span>Patient experience — HCAHPS (25%)</span>
+  </div>
+  <div style="position:relative;width:100%;height:280px">
+    <canvas id="mainChart" role="img" aria-label="Stacked horizontal bar chart. Top 5 hospitals score between 81.7 and 83.0 out of 100. Bars are split into 4 colored segments showing each quality dimension's contribution.">Cape Fear Valley Hoke 83.0, Fayette Medical 82.0, Citizens Medical 82.0, St Johns Medical 81.9, Buchanan General 81.7.</canvas>
+  </div>
+</div>
+
+<div class="bg">
+  <div class="pn">
+    <p class="pt">How the composite score is built</p>
+    <p style="font-size:12px;color:var(--color-text-secondary);margin:0 0 12px;line-height:1.6">Each CMS domain is MinMax-normalized to 0–100, then multiplied by 0.25. The four contributions sum to a 0–100 composite score. Based on CMS 2024–2025 Star Rating weights, redistributed equally across four clinical domains.</p>
+    <div style="display:flex;gap:2px;height:34px;border-radius:var(--border-radius-md);overflow:hidden;margin-bottom:8px">
+      <div style="flex:1;background:#1D9E75;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:rgba(255,255,255,.9)">25</div>
+      <div style="flex:1;background:#378ADD;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:rgba(255,255,255,.9)">25</div>
+      <div style="flex:1;background:#BA7517;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:rgba(255,255,255,.9)">25</div>
+      <div style="flex:1;background:#D85A30;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:rgba(255,255,255,.9)">25</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);font-size:10px;color:var(--color-text-secondary);gap:2px;margin-bottom:14px">
+      <div>Clinical</div><div>Safety</div><div>Spending</div><div>Experience</div>
+    </div>
+    <div style="border-top:.5px solid var(--color-border-tertiary);padding-top:10px">
+      <p style="font-size:11px;color:var(--color-text-secondary);margin:0;line-height:1.6">Hover over any bar to see the individual dimension score (0–100) and the final composite total for that hospital.</p>
+    </div>
+  </div>
+
+  <div class="pn">
+    <p class="pt">7 hospital archetypes</p>
+    <div class="ar"><div class="ad" style="background:#2D7A56"></div><div><p class="an">The Elite All-Rounder</p><p class="ac">All 4 dimensions ≥ 70</p></div></div>
+    <div class="ar"><div class="ad" style="background:#1D9E75"></div><div><p class="an">The Efficient Lifesaver</p><p class="ac">Clinical + Safety + Spending ≥ 70</p></div></div>
+    <div class="ar"><div class="ad" style="background:#378ADD"></div><div><p class="an">The Premium Specialist</p><p class="ac">Clinical + Experience ≥ 70, spending below</p></div></div>
+    <div class="ar"><div class="ad" style="background:#BA7517"></div><div><p class="an">The Economy Option</p><p class="ac">Spending ≥ 70, clinical + safety below</p></div></div>
+    <div class="ar"><div class="ad" style="background:#D85A30"></div><div><p class="an">The Hospitality Hospital</p><p class="ac">Experience ≥ 70, clinical + safety below</p></div></div>
+    <div class="ar"><div class="ad" style="background:#888780"></div><div><p class="an">Standard Mixed Performer</p><p class="ac">Inconsistent — doesn't fit above patterns</p></div></div>
+    <div class="ar"><div class="ad" style="background:#E24B4A"></div><div><p class="an">Urgent Improvement Needed</p><p class="ac">Clinical + Safety + Experience all < 70</p></div></div>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const tc = isDark ? '#B4B2A9' : '#5F5E5A';
+const gc = isDark ? 'rgba(180,178,169,0.08)' : 'rgba(95,94,90,0.08)';
+
+const hospitals = [
+  'Cape Fear Valley Hoke',
+  'Fayette Medical Ctr',
+  'Citizens Medical Ctr',
+  'St Johns Medical Ctr',
+  'Buchanan General'
+];
+
+const totals = [83.0, 82.0, 82.0, 81.9, 81.7];
+
+const scorePlugin = {
+  id: 'scoreLabels',
+  afterDatasetsDraw(chart) {
+    const { ctx, scales: { x } } = chart;
+    const lastMeta = chart.getDatasetMeta(3);
+    if (!lastMeta || !lastMeta.data) return;
+    lastMeta.data.forEach((bar, i) => {
+      const xPos = x.getPixelForValue(totals[i]) + 8;
+      ctx.save();
+      ctx.font = '500 11px sans-serif';
+      ctx.fillStyle = isDark ? '#B4B2A9' : '#5F5E5A';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(totals[i].toFixed(1), xPos, bar.y);
+      ctx.restore();
+    });
+  }
+};
+
+new Chart(document.getElementById('mainChart'), {
+  type: 'bar',
+  data: {
+    labels: hospitals,
+    datasets: [
+      { label: 'Clinical', data: [18.63, 17.09, 16.84, 20.77, 17.82], backgroundColor: '#1D9E75', stack: 's' },
+      { label: 'Safety', data: [23.32, 25.00, 21.45, 22.85, 22.34], backgroundColor: '#378ADD', stack: 's' },
+      { label: 'Spending', data: [20.76, 18.72, 19.38, 18.34, 19.77], backgroundColor: '#BA7517', stack: 's' },
+      { label: 'Experience', data: [20.29, 21.21, 24.28, 19.98, 21.72], backgroundColor: '#D85A30', stack: 's' }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'y', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const dimScore = (ctx.raw * 4).toFixed(1);
+            return ` ${ctx.dataset.label}: ${dimScore} / 100 → contributes ${ctx.raw.toFixed(2)} pts`;
+          },
+          footer: (items) => {
+            const total = items.reduce((s, i) => s + i.raw, 0);
+            return `  Composite score: ${total.toFixed(1)} / 100`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        stacked: true,
+        min: 0,
+        max: 92,
+        ticks: { color: tc, font: { size: 11 }, callback: v => v === 0 ? '0' : v },
+        grid: { color: gc },
+        border: { display: false },
+        title: { display: true, text: 'Composite score (out of 100)', color: tc, font: { size: 11 } }
+      },
+      y: {
+        stacked: true,
+        ticks: { color: tc, font: { size: 12 } },
+        grid: { display: false },
+        border: { display: false }
+      }
+    }
+  },
+  plugins: [scorePlugin]
+});
+</script>
