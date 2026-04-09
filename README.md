@@ -1,5 +1,4 @@
 # U.S. Hospital Quality & Readmission Risk Analyzer
-
 A data‑driven investigation into hospital performance using public CMS datasets. This project combines Medicare data on readmissions, mortality, patient safety, healthcare‑associated infections, patient experience, and Medicare spending per episode.
 
 I took 7 raw CMS datasets, built a complete cleaning pipeline, and designed a multi‑dimensional quality scoring system.  
@@ -115,8 +114,6 @@ I started with 7 raw CSV files from a US government healthcare database and ende
 - Proved that larger hospitals are better at keeping patients alive but worse at preventing safety incidents
 - Built 10+ publication‑quality visualizations including heatmaps, scatter plots, normalized bar charts, and stacked charts
 
----
-
 ## What I Proved About Myself
 
 I came in as a self‑taught analyst who sometimes froze on independent work. I leave having:
@@ -125,7 +122,6 @@ I came in as a self‑taught analyst who sometimes froze on independent work. I 
 - Made real analytical decisions independently — the `worse_flags_mort` naming correction, the `.between(4,6)` filter, noticing the patient experience bias toward small hospitals
 - Written genuinely good analytical markdown that explains *why* findings matter, not just what the numbers say
 
----
 
 ## Author
 
