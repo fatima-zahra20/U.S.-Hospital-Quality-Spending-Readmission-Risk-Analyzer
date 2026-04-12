@@ -89,6 +89,12 @@ Yes. This is the axis that changes the results. Even if it can't be applied unif
 That is the next step for this project.
 
 
+#### Here is the first overview of the dashboard (POWER BI)
+
+<img width="1039" height="574" alt="image" src="https://github.com/user-attachments/assets/6b47d2c3-1fc3-47ef-bd0e-e3e67655525d" />
+
+
+
 ## Overall Conclusion
 
 The healthcare industry needs more investigation, though hospitals are genuinely performing well across most measures — even without access to detailed patient‑level data.
