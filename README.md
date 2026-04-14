@@ -88,13 +88,6 @@ As hospitals get larger, clinical survival rates tend to improve slightly.
 Yes. This is the axis that changes the results. Even if it can't be applied uniformly across every hospital, it remains the heart of my analyzer. To make this function shine, it should be connected to updated data in a dashboard that allows users to explore different variables.  
 That is the next step for this project.
 
-
-#### Here is the first overview of the dashboard (POWER BI)
-
-<img width="1039" height="574" alt="image" src="https://github.com/user-attachments/assets/6b47d2c3-1fc3-47ef-bd0e-e3e67655525d" />
-
-
-
 ## Overall Conclusion
 
 The healthcare industry needs more investigation, though hospitals are genuinely performing well across most measures — even without access to detailed patient‑level data.
@@ -120,19 +113,51 @@ I started with 7 raw CSV files from a US government healthcare database and ende
 - Proved that larger hospitals are better at keeping patients alive but worse at preventing safety incidents
 - Built 10+ publication‑quality visualizations including heatmaps, scatter plots, normalized bar charts, and stacked charts
 
-## What I Proved About Myself
 
-I came in as a self‑taught analyst who sometimes froze on independent work. I leave having:
-
-- Debugged real errors under pressure without giving up
-- Made real analytical decisions independently — the `worse_flags_mort` naming correction, the `.between(4,6)` filter, noticing the patient experience bias toward small hospitals
-- Written genuinely good analytical markdown that explains *why* findings matter, not just what the numbers say
+### Dashboard Pages
+1/2. Overview — Quality & Star Ratings
+A high-level map of hospital distribution across the U.S. with KPI cards for average star rating, readmission rate, safety score, mortality rate, and patient experience. Filterable by hospital type.
+<img width="985" height="564" alt="image" src="https://github.com/user-attachments/assets/20084918-c9bd-498f-8800-65ac97045542" />
 
 
-## Author
+3/4. Hospital Risk Analysis — Readmissions vs. Complications
+Scatter plot analysis comparing individual hospitals on two key risk dimensions: readmission ratio and PSI-90 complication score. Hospitals above 1.0 on either axis are performing worse than the national average.
+<img width="888" height="521" alt="image" src="https://github.com/user-attachments/assets/dff4f523-6998-4e80-a7ed-05e2dbd51fdc" />
 
-**Fatima Zahra Boutkhil**
 
-**Dataset:** [CMS Data](https://data.cms.gov/) – Data that helps you better understand CMS programs
+5/6. The Spending Trap — High Cost, Poor Outcomes
+Identifies the 26 hospitals with the highest average spending per episode and overlays their clinical outcome scores. Core finding: these hospitals show above-average readmissions, mortality, and patient incidents simultaneously — high spending is not buying better care.
+<img width="901" height="515" alt="image" src="https://github.com/user-attachments/assets/dadf74bf-a2f2-4d45-ad05-00174a57dbf6" />
 
-**Tools:** Python (Pandas, Matplotlib, Seaborn)
+
+7. Does Ownership Predict Quality?
+Radar/composite analysis across all ownership types (physician-owned, non-profit, government, proprietary). Key finding: physician-owned hospitals outperform all others on every metric — lowest readmission ratio (0.915), highest patient experience (90.2), and the only group with PSI-90 below 1.0.
+<img width="906" height="523" alt="image" src="https://github.com/user-attachments/assets/5a54bb8c-3eb3-4677-813d-e544c232d468" />
+
+
+⚠️ Caveat applied: Physician-owned hospitals tend to treat lower-risk elective patients. The analysis explicitly flags that their superior scores partially reflect patient mix, not just quality of care — a real-world bias that a naive analysis would miss.
+
+8. Emergency Department Effect on Quality
+Compares hospitals with and without 24/7 emergency services on three metrics: mortality rate, complication score (PSI-90), and infection ratio (SIR). To ensure a fair comparison, three analytical filters were applied:
+
+<img width="909" height="522" alt="image" src="https://github.com/user-attachments/assets/59fdf880-f70e-41b1-ad60-234f72f9437d" />
+
+
+Acute Care Only — excluded Critical Access and Psychiatric hospitals with different reporting rules
+ID Standardization — enforced 6-digit Facility IDs to prevent data loss during merge
+Risk-Adjusted Scores — used CMS standardized scores to account for patient severity
+
+Finding: Non-ED hospitals show meaningfully lower infection and complication rates, consistent with their controlled, elective-only environment.
+9/10. Systemic Risk by State
+Rather than ranking states by raw count of underperforming hospitals (which would always favor large states), this page measures the failure rate — the percentage of a state's hospitals performing below the national average. Finding: New York (21% failure rate) and Florida lead large states, despite housing some of the country's best-ranked elite hospitals — a "Quality Gap" paradox driven by overcrowding and funding disparities.
+<img width="871" height="507" alt="image" src="https://github.com/user-attachments/assets/696d53f8-1bb5-4e26-93c5-3fe30f691463" />
+
+
+11. Hospital Archetypes — The Core Risk Scoring Model
+The project's analytical centerpiece. Hospitals are segmented into 7 archetypes based on a composite score across spending, mortality, complications, and patient experience
+
+<img width="873" height="505" alt="image" src="https://github.com/user-attachments/assets/26b0deaf-58cd-4ab6-8374-52856f095add" />
+
+
+Built by *Fatima-Zahra Boutkhil* as part of a self-directed data analyst portfolio.
+Focused on building real analytical projects using public datasets — not tutorials.
