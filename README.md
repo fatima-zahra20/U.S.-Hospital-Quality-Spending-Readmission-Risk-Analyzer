@@ -158,6 +158,7 @@ The project's analytical centerpiece. Hospitals are segmented into 7 archetypes 
 
 <img width="873" height="505" alt="image" src="https://github.com/user-attachments/assets/26b0deaf-58cd-4ab6-8374-52856f095add" />
 
+### Visit full interactive dashboard on : https://fatima-zahra20.github.io/U.S.-Hospital-Quality-Spending-Readmission-Risk-Analyzer/Interactive_Dashboard.html
 
 Built by *Fatima-Zahra Boutkhil* as part of a self-directed data analyst portfolio.
 Focused on building real analytical projects using public datasets — not tutorials.
